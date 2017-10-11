@@ -2,7 +2,7 @@
 /**
  * Project: DailyTimeLog v1.0
  * Purpose: Controller for Daily Time Log
- * Author: Vijay Felix
+ * Author: Vijay Felix Raj C
  * Review: Loganathan N
  * Date: 4th Sep'17
  */
@@ -38,9 +38,9 @@ class DailyTimeLogController extends Controller
             $data['dailytimelog'] = DailyTimeLog::orderBy('id', 'desc')->where('user_id', '=', Auth::user()->id)->get();
         }
         if (count($data['dailytimelog']) > 0) {
-            for ($i=0; $i < count($data['dailytimelog']); $i++) { 
+            for ($i=0; $i < count($data['dailytimelog']); $i++) {
                    $data['dailytimelog'][$i]->schedule_on = DailyTimeLogHelper::getDateFormat($data['dailytimelog'][$i]->schedule_on);
-            }    
+            }
         }
         return view('dailytimelog.index', $data);
     }
